@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class CameraDiscoTest : MonoBehaviour 
 {
+    // Speed of color cycle
+    [SerializeField]
+    float colorSpeed = .005f;
+
+    // Camera
     Camera camera;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -24,7 +30,7 @@ public class CameraDiscoTest : MonoBehaviour
         while (true)
         {
             Color.RGBToHSV(camera.backgroundColor, out h, out s, out v);
-            h += .005f;
+            h += colorSpeed;
             if (h == 1f)
                 h = 0f;
             camera.backgroundColor = Color.HSVToRGB(h, s, v);
