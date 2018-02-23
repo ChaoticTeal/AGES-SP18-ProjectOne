@@ -4,20 +4,35 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour 
 {
+    // Projectile speed
+    [SerializeField]
+    float fireSpeed = 5f;
     // Movement speed
     [SerializeField]
     float moveSpeed = 5f;
     // Rotation speed
     [SerializeField] 
     float rotateSpeed = 5f;
+    // Projectile prefab
+    [SerializeField]
+    GameObject projectile;
     // Player number
     [SerializeField]
     int playerNumber = 1;
+    // Projectile spawn point
+    [SerializeField]
+    Transform shootPoint;
 
+    // Should the player shoot?
+    bool shouldShoot;
     // Horizontal input
     float horizontalInput;
     // Vertical input
     float verticalInput;
+    // Active projectile
+    GameObject activeProjectile;
+    // Fire button
+    string fireButton;
     // Horizontal axis
     string horizontalAxis;
     // Vertical axis
@@ -30,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
 	{
         horizontalAxis = "P" + playerNumber + "-Horizontal";
         verticalAxis = "P" + playerNumber + "-Vertical";
+        fireButton = "P" + playerNumber + "-Fire";
         rigidbody = GetComponent<Rigidbody>();
 	}
 	
@@ -43,6 +59,8 @@ public class PlayerMovement : MonoBehaviour
     {
         Rotate();
         Move();
+        if (shouldShoot)
+            Fire();
     }
 
     // Handle input on necessary axes
@@ -50,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxis(horizontalAxis);
         verticalInput = Input.GetAxis(verticalAxis);
+        shouldShoot = Input.GetButtonDown(fireButton);
     }
 
     // Turn the player - from the Unity TANKS tutorial
@@ -65,5 +84,14 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 movement = transform.forward * verticalInput * moveSpeed * Time.deltaTime;
         rigidbody.MovePosition(rigidbody.position + movement);
+    }
+
+    void Fire()
+    {
+        if (activeProjectile != null)
+            Destroy(activeProjectile);
+        activeProjectile = Instantiate(projectile, shootPoint.position, shootPoint.transform.rotation);
+        activeProjectile.transform.Rotate(Vector3.right, -90f);
+        activeProjectile.GetComponent<Rigidbody>().velocity = shootPoint.transform.forward * fireSpeed;
     }
 }
