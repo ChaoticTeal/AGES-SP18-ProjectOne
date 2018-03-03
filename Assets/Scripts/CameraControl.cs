@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+// Script adapted from TANKS tutorial
 public class CameraControl : MonoBehaviour
 {
     public float m_DampTime = 0.2f;                 

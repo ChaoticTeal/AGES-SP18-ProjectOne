@@ -12,17 +12,11 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     float lifetime = 3f;
 
-	// Use this for initialization
-	void Start () 
-	{
+    // Use this for initialization
+    void Start()
+    {
         Destroy(gameObject, lifetime);
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		
-	}
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

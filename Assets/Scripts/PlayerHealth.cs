@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+// Script adapted from TANKS tutorial
 public class PlayerHealth : MonoBehaviour
 {
     public float m_StartingHealth = 100f;          

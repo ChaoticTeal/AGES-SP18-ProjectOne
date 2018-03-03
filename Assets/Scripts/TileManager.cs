@@ -87,7 +87,8 @@ public class TileManager : MonoBehaviour
                 activeMaterials.Add(Random.Range(0, tileMaterials.Count));
                 tiles[activeTile].GetComponent<MeshRenderer>().material = tileMaterials[activeMaterials[activeTile]];
                 tileLight = tiles[activeTile].GetComponentInChildren<Light>();
-                tileLight.color = tileMaterials[activeMaterials[activeTile]].color;
+                if (tileLight != null)
+                    tileLight.color = tileMaterials[activeMaterials[activeTile]].color;
 
                 xPosition += tileDimensions;
                 activeTile++;

@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour 
+public class PlayerMovement : MonoBehaviour
 {
     // Brake multiplier
     [SerializeField]
     float brakeMultiplier = .99f;
+    // Time for dancing
+    [SerializeField]
+    float danceTime;
     // Fire cooldown
     [SerializeField]
-    float fireCooldown = 2f;    
+    float fireCooldown = 2f;
     // Projectile speed
     [SerializeField]
     float fireSpeed = 5f;
@@ -20,14 +23,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float moveSpeed = 5f;
     // Rotation speed
-    [SerializeField] 
+    [SerializeField]
     float rotateSpeed = 5f;
     // Projectile prefab
     [SerializeField]
     GameObject projectile;
-    // Player number
-    [SerializeField]
-    int playerNumber = 1;
     // Projectile spawn point
     [SerializeField]
     Transform shootPoint;
@@ -44,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
     float verticalInput;
     // Active projectile
     GameObject activeProjectile;
+    // Player number
+    int playerNumber_UseProperty;
     // Fire button
     string fireButton;
     // Horizontal axis
@@ -52,15 +54,22 @@ public class PlayerMovement : MonoBehaviour
     string verticalAxis;
     // Player rigidbody
     Rigidbody rigidbody;
-    
+
+
+    public int PlayerNumber
+    {
+        get { return playerNumber_UseProperty; }
+        set { playerNumber_UseProperty = value; }
+    }
+
 	// Use this for initialization
 	void Start () 
 	{
-        horizontalAxis = "P" + playerNumber + "-Horizontal";
-        verticalAxis = "P" + playerNumber + "-Vertical";
-        fireButton = "P" + playerNumber + "-Fire";
+        horizontalAxis = "P" + PlayerNumber + "-Horizontal";
+        verticalAxis = "P" + PlayerNumber + "-Vertical";
+        fireButton = "P" + PlayerNumber + "-Fire";
         rigidbody = GetComponent<Rigidbody>();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -120,11 +129,27 @@ public class PlayerMovement : MonoBehaviour
             rigidbody.velocity *= brakeMultiplier;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<DiscoBall>() != null)
+            StartCoroutine(Dance());
+    }
+
     // Wait for cooldown
     IEnumerator ShootCooldown()
     {
         canShoot = false;
         yield return new WaitForSeconds(fireCooldown);
         canShoot = true;
+    }
+
+    IEnumerator Dance()
+    {
+        isDancing = true;
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.left * rotateSpeed;
+        yield return new WaitForSeconds(danceTime);
+        rigidbody.angularVelocity = Vector3.zero;
+        isDancing = false;
     }
 }
