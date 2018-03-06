@@ -5,6 +5,9 @@ using UnityEngine;
 public class DiscoBall : MonoBehaviour 
 {
     // SerializeFields
+    // Disco ball lifetime
+    [SerializeField]
+    float discoBallLifetime = 2f;
     // Rotation speed
     [SerializeField]
     float rotateSpeed;
@@ -17,6 +20,7 @@ public class DiscoBall : MonoBehaviour
 	void Start () 
 	{
         rigidbody = GetComponent<Rigidbody>();
+        Destroy(this, discoBallLifetime);
 	}
 	
 	void FixedUpdate () 

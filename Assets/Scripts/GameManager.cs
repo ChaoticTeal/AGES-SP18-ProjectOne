@@ -4,16 +4,29 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-// Script adapted from PlayerS tutorial
+// Script adapted from TANKS tutorial
 public class GameManager : MonoBehaviour
 {
-    public int m_NumRoundsToWin = 5;        
-    public float m_StartDelay = 3f;         
-    public float m_EndDelay = 3f;           
-    public CameraControl m_CameraControl;   
-    public Text m_MessageText;              
-    public GameObject m_PlayerPrefab;         
-    public List<PlayerManager> players;           
+    public int m_NumRoundsToWin = 5;
+    public CameraControl m_CameraControl;
+    public float m_StartDelay = 3f;
+    public float m_EndDelay = 3f;
+    public GameObject m_PlayerPrefab;
+    public List<PlayerManager> players;
+    public Text m_MessageText;
+
+    [SerializeField]
+    float discoBallLifetime = 2f;
+    [SerializeField]
+    float maxDiscoBallX = 40f;
+    [SerializeField]
+    float maxDiscoBallZ = -10f;
+    [SerializeField]
+    float minDiscoBallX = 10f;
+    [SerializeField]
+    float minDiscoBallZ = -40f;
+    [SerializeField]
+    GameObject discoBallPrefab;
 
 
     private int m_RoundNumber;              
@@ -123,6 +136,23 @@ public class GameManager : MonoBehaviour
         yield return m_EndWait;
     }
 
+    IEnumerator DiscoBallSpawn()
+    {
+        GameObject activeDiscoBall = new GameObject();
+        Destroy(activeDiscoBall);
+        while (!OnePlayerLeft())
+        {
+            yield return new WaitForSeconds(discoBallLifetime);
+            if (activeDiscoBall == null)
+            {
+                float xPos = Random.Range(minDiscoBallX, maxDiscoBallX);
+                float zPos = Random.Range(minDiscoBallZ, maxDiscoBallZ);
+                activeDiscoBall = Instantiate(discoBallPrefab);
+                activeDiscoBall.transform.position = new Vector3(xPos, 10f, zPos);
+            }
+            yield return new WaitForSeconds(Random.Range(0, 2));
+        }
+    }
 
     private bool OnePlayerLeft()
     {

@@ -12,6 +12,12 @@ public class TileManager : MonoBehaviour
     [SerializeField]
     float tileDimensions = 5f;
     /// <summary>
+    /// Interval to switch tile colors
+    /// </summary>
+    [Tooltip("Time between tile color shifts")]
+    [SerializeField]
+    float tileInterval = 3f;
+    /// <summary>
     /// Reference to generic tile prefab.
     /// </summary>
     [Tooltip("Reference to generic tile prefab.")]
@@ -64,6 +70,7 @@ public class TileManager : MonoBehaviour
         yPosition = transform.position.y;
         zPosition = transform.position.z;
         InstantiateTiles();
+        StartCoroutine(UpdateTiles());
 	}
 	
 	// Update is called once per frame
@@ -95,6 +102,22 @@ public class TileManager : MonoBehaviour
             }
             xPosition = tileDimensions / 2;
             zPosition -= tileDimensions;
+        }
+    }
+
+    IEnumerator UpdateTiles()
+    {
+        while (true)
+        {
+            for (int activeTile = 0; activeTile < tiles.Count; activeTile++)
+            {
+                activeMaterials[activeTile] = Random.Range(0, tileMaterials.Count);
+                tiles[activeTile].GetComponent<MeshRenderer>().material = tileMaterials[activeMaterials[activeTile]];
+                tileLight = tiles[activeTile].GetComponentInChildren<Light>();
+                if (tileLight != null)
+                    tileLight.color = tileMaterials[activeMaterials[activeTile]].color;
+            }
+            yield return new WaitForSeconds(tileInterval);
         }
     }
 }

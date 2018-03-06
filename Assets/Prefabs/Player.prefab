@@ -254,8 +254,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brakeMultiplier: 0.99
-  danceTime: 0
-  fireCooldown: 2
+  danceTime: 2
+  fireCooldown: 1
   fireSpeed: 15
   maxVelocity: 100
   moveSpeed: 2000
