@@ -33,7 +33,8 @@ public class GameManager : MonoBehaviour
     private WaitForSeconds m_StartWait;     
     private WaitForSeconds m_EndWait;       
     private PlayerManager m_RoundWinner;
-    private PlayerManager m_GameWinner;       
+    private PlayerManager m_GameWinner;
+    GameObject activeDiscoBall;
 
 
     private void Start()
@@ -107,6 +108,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator RoundPlaying()
     {
         EnablePlayerControl();
+        StartCoroutine(DiscoBallSpawn());
 
         m_MessageText.text = string.Empty;
 
@@ -138,8 +140,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator DiscoBallSpawn()
     {
-        GameObject activeDiscoBall = new GameObject();
-        Destroy(activeDiscoBall);
         while (!OnePlayerLeft())
         {
             yield return new WaitForSeconds(discoBallLifetime);

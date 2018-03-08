@@ -2817,12 +2817,13 @@ MonoBehaviour:
     m_Instance: {fileID: 0}
     m_Wins: 0
   m_MessageText: {fileID: 830047887}
-  discoBallLifetime: 0
+  discoBallLifetime: 5
   maxDiscoBallX: 40
   maxDiscoBallZ: -10
   minDiscoBallX: 10
   minDiscoBallZ: -40
-  discoBallPrefab: {fileID: 0}
+  discoBallPrefab: {fileID: 1743507147166492, guid: 67226eba7bee34740a6cff0793738401,
+    type: 2}
 --- !u!4 &1412171418
 Transform:
   m_ObjectHideFlags: 0

@@ -460,6 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55001dfe7d9366a479b5a7e6267085b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  discoBallLifetime: 5
   rotateSpeed: 5
 --- !u!114 &114573027724541364
 MonoBehaviour:

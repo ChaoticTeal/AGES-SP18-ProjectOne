@@ -20,7 +20,7 @@ public class DiscoBall : MonoBehaviour
 	void Start () 
 	{
         rigidbody = GetComponent<Rigidbody>();
-        Destroy(this, discoBallLifetime);
+        Destroy(gameObject, discoBallLifetime);
 	}
 	
 	void FixedUpdate () 
