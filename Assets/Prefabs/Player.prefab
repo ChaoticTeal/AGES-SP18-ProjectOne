@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54774696898547144}
   - component: {fileID: 114467941570974554}
   - component: {fileID: 114737967344159884}
+  - component: {fileID: 82099511352492458}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -226,6 +227,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &82099511352492458
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1269336834427036}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114423153908037918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -255,12 +336,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brakeMultiplier: 0.99
   danceTime: 2
+  danceRotateMod: 100
   fireCooldown: 1
   fireSpeed: 15
   maxVelocity: 100
   moveSpeed: 2000
   rotateSpeed: 100
   projectile: {fileID: 1681906012803792, guid: ca17220f6e746e54d8405cd7a9a3edbd, type: 2}
+  groundLayerNumber: 10
+  audioClips:
+  - {fileID: 8300000, guid: 708d95cc05dbebb498a9ec708c431731, type: 3}
+  - {fileID: 8300000, guid: 7e37d91d525a592468d8324aa1fd5252, type: 3}
+  - {fileID: 8300000, guid: ab68ea5a04cf4af40bc1569c1d51dc69, type: 3}
+  - {fileID: 8300000, guid: 6d11f7bd11fb4074c926cddae0aa2d8d, type: 3}
   shootPoint: {fileID: 4207295502218974}
 --- !u!114 &114737967344159884
 MonoBehaviour:

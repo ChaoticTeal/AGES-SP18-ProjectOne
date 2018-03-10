@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     // Time for dancing
     [SerializeField]
     float danceTime;
+    // Spin speed modifier for dancing
+    [SerializeField]
+    float danceRotateMod = 100f;
     // Fire cooldown
     [SerializeField]
     float fireCooldown = 2f;
@@ -28,10 +31,18 @@ public class PlayerMovement : MonoBehaviour
     // Projectile prefab
     [SerializeField]
     GameObject projectile;
+    // Ground layer
+    [SerializeField]
+    int groundLayerNumber;
+    // Audio clips
+    [SerializeField]
+    List<AudioClip> audioClips;
     // Projectile spawn point
     [SerializeField]
     Transform shootPoint;
 
+    // Audio source
+    AudioSource audioSource;
     // Can the player shoot?
     bool canShoot = true;
     // Is the player dancing?
@@ -69,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
         verticalAxis = "P" + PlayerNumber + "-Vertical";
         fireButton = "P" + PlayerNumber + "-Fire";
         rigidbody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -135,6 +147,18 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(Dance());
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == groundLayerNumber)
+        {
+            if (audioSource != null)
+            {
+                audioSource.clip = audioClips[Random.Range(0, audioClips.Count)];
+                audioSource.Play();
+            }
+        }
+    }
+
     // Wait for cooldown
     IEnumerator ShootCooldown()
     {
@@ -147,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isDancing = true;
         rigidbody.velocity = Vector3.zero;
-        rigidbody.angularVelocity = Vector3.left * rotateSpeed;
+        rigidbody.angularVelocity = Vector3.left * rotateSpeed * danceRotateMod;
         yield return new WaitForSeconds(danceTime);
         rigidbody.angularVelocity = Vector3.zero;
         isDancing = false;

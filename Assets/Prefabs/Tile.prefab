@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4562374155083646}
   - component: {fileID: 108654858034943338}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4569689441722566}
   - component: {fileID: 33744952382495162}
   - component: {fileID: 23427375957887158}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
