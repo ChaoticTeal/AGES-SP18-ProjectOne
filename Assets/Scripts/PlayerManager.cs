@@ -24,6 +24,7 @@ public class PlayerManager
         m_CanvasGameObject = m_Instance.GetComponentInChildren<Canvas>().gameObject;
         particleSystem = m_Instance.GetComponent<PlayerHealth>().m_ExplosionPrefab.GetComponent<ParticleSystem>();
         var systemMain = particleSystem.main;
+        systemMain.startColor = m_PlayerColor;
 
         m_Movement.PlayerNumber = m_PlayerNumber;
 
@@ -36,7 +37,6 @@ public class PlayerManager
             renderers[i].material.color = m_PlayerColor;
         }
 
-        systemMain.startColor = m_PlayerColor;
     }
 
 
