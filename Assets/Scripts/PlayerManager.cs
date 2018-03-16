@@ -43,7 +43,6 @@ public class PlayerManager
     public void DisableControl()
     {
         m_Movement.enabled = false;
-
         m_CanvasGameObject.SetActive(false);
     }
 
@@ -61,6 +60,7 @@ public class PlayerManager
         m_Instance.transform.position = m_SpawnPoint.position;
         m_Instance.transform.rotation = m_SpawnPoint.rotation;
 
+        m_Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
         m_Instance.SetActive(false);
         m_Instance.SetActive(true);
     }
