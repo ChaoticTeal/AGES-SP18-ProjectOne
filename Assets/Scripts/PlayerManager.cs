@@ -32,10 +32,7 @@ public class PlayerManager
 
         MeshRenderer[] renderers = m_Instance.GetComponentsInChildren<MeshRenderer>();
 
-        for (int i = 0; i < renderers.Length; i++)
-        {
-            renderers[i].material.color = m_PlayerColor;
-        }
+        renderers[0].material.color = m_PlayerColor;
 
     }
 

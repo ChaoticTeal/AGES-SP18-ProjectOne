@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
-        m_ExplosionParticles = Instantiate(m_ExplosionPrefab, gameObject.transform).GetComponent<ParticleSystem>();
+        m_ExplosionParticles = Instantiate(m_ExplosionPrefab).GetComponent<ParticleSystem>();
         m_ExplosionAudio = m_ExplosionParticles.GetComponent<AudioSource>();
 
         m_ExplosionParticles.gameObject.SetActive(false);
