@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
     float minDiscoBallZ = -40f;
     [SerializeField]
     GameObject discoBallPrefab;
+    [SerializeField]
+    GameObject playerEndTextPrefab;
+    [SerializeField]
+    GameObject endPanel;
 
 
     private int m_RoundNumber;              
@@ -35,12 +39,15 @@ public class GameManager : MonoBehaviour
     private PlayerManager m_RoundWinner;
     private PlayerManager m_GameWinner;
     GameObject activeDiscoBall;
+    List<GameObject> playerEndTexts = new List<GameObject>();
+    GameObject playerScores;
 
 
     private void Start()
     {
         m_StartWait = new WaitForSeconds(m_StartDelay);
         m_EndWait = new WaitForSeconds(m_EndDelay);
+        playerScores = endPanel.transform.Find("PlayerScores").gameObject;
 
         SpawnAllPlayers();
         SetCameraTargets();
@@ -57,6 +64,8 @@ public class GameManager : MonoBehaviour
                 Instantiate(m_PlayerPrefab, players[i].m_SpawnPoint.position, players[i].m_SpawnPoint.rotation) as GameObject;
             players[i].m_PlayerNumber = i + 1;
             players[i].Setup();
+            playerEndTexts.Add(Instantiate(playerEndTextPrefab, playerScores.transform));
+            playerEndTexts[i].transform.Find("Player").GetComponent<Text>().text = players[i].m_ColoredPlayerText;
         }
     }
 
@@ -82,7 +91,12 @@ public class GameManager : MonoBehaviour
 
         if (m_GameWinner != null)
         {
-            SceneManager.LoadScene(0);
+            //SceneManager.LoadScene(0);
+            endPanel.SetActive(true);
+            for(int i = 0; i < players.Count; i++)
+            {
+                playerEndTexts[i].transform.Find("Points").GetComponent<Text>().text = players[i].m_Wins.ToString();
+            }
         }
         else
         {
@@ -133,7 +147,10 @@ public class GameManager : MonoBehaviour
         m_GameWinner = GetGameWinner();
 
         string message = EndMessage();
-        m_MessageText.text = message;
+        if (m_GameWinner != null)
+            playerScores.transform.Find("EndMessage").GetComponent<Text>().text = message;
+        else
+            m_MessageText.text = message;
 
         yield return m_EndWait;
     }
@@ -237,5 +254,15 @@ public class GameManager : MonoBehaviour
         {
             players[i].DisableControl();
         }
+    }
+
+    public void RestartButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ToTitleButton()
+    {
+        SceneManager.LoadScene(0);
     }
 }
