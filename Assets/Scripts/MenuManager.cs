@@ -11,14 +11,18 @@ public class MenuManager : MonoBehaviour
     // Credits panel
     [SerializeField]
     GameObject creditsPanel;
+    // Join screen
+    [SerializeField]
+    GameObject joinPanel;
     // Name of next scene
     [SerializeField]
     string nextScene;
 
-    // Start the game
+    // Go to the join screen
     public void StartButton()
     {
-        SceneManager.LoadScene(nextScene);
+        mainPanel.SetActive(false);
+        joinPanel.SetActive(true);
     }
 
     // Show the credits panel, hide the main panel
@@ -33,6 +37,13 @@ public class MenuManager : MonoBehaviour
     {
         creditsPanel.SetActive(false);
         mainPanel.SetActive(true);
+    }
+
+    // Start the game
+    public void JoinStartButton()
+    {
+        if(JoinScreen.NumberOfJoinedPlayers >= 2)
+            SceneManager.LoadScene(nextScene);
     }
 
     // Quit the game

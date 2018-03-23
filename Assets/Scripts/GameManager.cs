@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     GameObject playerEndTextPrefab;
     [SerializeField]
     GameObject endPanel;
+    [SerializeField]
+    string menuScene;
 
 
     private int m_RoundNumber;              
@@ -38,6 +40,7 @@ public class GameManager : MonoBehaviour
     private WaitForSeconds m_EndWait;       
     private PlayerManager m_RoundWinner;
     private PlayerManager m_GameWinner;
+    int activePlayers;
     GameObject activeDiscoBall;
     List<GameObject> playerEndTexts = new List<GameObject>();
     GameObject playerScores;
@@ -45,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        activePlayers = JoinScreen.NumberOfJoinedPlayers;
         m_StartWait = new WaitForSeconds(m_StartDelay);
         m_EndWait = new WaitForSeconds(m_EndDelay);
         playerScores = endPanel.transform.Find("PlayerScores").gameObject;
@@ -58,7 +62,9 @@ public class GameManager : MonoBehaviour
 
     private void SpawnAllPlayers()
     {
-        for (int i = 0; i < players.Count; i++)
+        if (activePlayers < 2)
+            SceneManager.LoadScene(menuScene);
+        for (int i = 0; i < activePlayers; i++)
         {
             players[i].m_Instance =
                 Instantiate(m_PlayerPrefab, players[i].m_SpawnPoint.position, players[i].m_SpawnPoint.rotation) as GameObject;
@@ -72,7 +78,7 @@ public class GameManager : MonoBehaviour
 
     private void SetCameraTargets()
     {
-        Transform[] targets = new Transform[players.Count];
+        Transform[] targets = new Transform[activePlayers];
 
         for (int i = 0; i < targets.Length; i++)
         {
@@ -93,7 +99,7 @@ public class GameManager : MonoBehaviour
         {
             //SceneManager.LoadScene(0);
             endPanel.SetActive(true);
-            for(int i = 0; i < players.Count; i++)
+            for(int i = 0; i < activePlayers; i++)
             {
                 playerEndTexts[i].transform.Find("Points").GetComponent<Text>().text = players[i].m_Wins.ToString();
             }
@@ -175,7 +181,7 @@ public class GameManager : MonoBehaviour
     {
         int numPlayersLeft = 0;
 
-        for (int i = 0; i < players.Count; i++)
+        for (int i = 0; i < activePlayers; i++)
         {
             if (players[i].m_Instance.activeSelf)
                 numPlayersLeft++;
@@ -187,7 +193,7 @@ public class GameManager : MonoBehaviour
 
     private PlayerManager GetRoundWinner()
     {
-        for (int i = 0; i < players.Count; i++)
+        for (int i = 0; i < activePlayers; i++)
         {
             if (players[i].m_Instance.activeSelf)
                 return players[i];
@@ -199,7 +205,7 @@ public class GameManager : MonoBehaviour
 
     private PlayerManager GetGameWinner()
     {
-        for (int i = 0; i < players.Count; i++)
+        for (int i = 0; i < activePlayers; i++)
         {
             if (players[i].m_Wins == m_NumRoundsToWin)
                 return players[i];
@@ -218,7 +224,7 @@ public class GameManager : MonoBehaviour
 
         message += "\n\n\n\n";
 
-        for (int i = 0; i < players.Count; i++)
+        for (int i = 0; i < activePlayers; i++)
         {
             message += players[i].m_ColoredPlayerText + ": " + players[i].m_Wins + " WINS\n";
         }
@@ -232,7 +238,7 @@ public class GameManager : MonoBehaviour
 
     private void ResetAllPlayers()
     {
-        for (int i = 0; i < players.Count; i++)
+        for (int i = 0; i < activePlayers; i++)
         {
             players[i].Reset();
         }
@@ -241,7 +247,7 @@ public class GameManager : MonoBehaviour
 
     private void EnablePlayerControl()
     {
-        for (int i = 0; i < players.Count; i++)
+        for (int i = 0; i < activePlayers; i++)
         {
             players[i].EnableControl();
         }
@@ -250,7 +256,7 @@ public class GameManager : MonoBehaviour
 
     private void DisablePlayerControl()
     {
-        for (int i = 0; i < players.Count; i++)
+        for (int i = 0; i < activePlayers; i++)
         {
             players[i].DisableControl();
         }
