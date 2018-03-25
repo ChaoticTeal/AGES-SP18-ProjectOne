@@ -539,6 +539,8 @@ RectTransform:
   - {fileID: 751527446}
   - {fileID: 1375520853}
   - {fileID: 205994751}
+  - {fileID: 390593376}
+  - {fileID: 1506438183}
   - {fileID: 2001136878}
   m_Father: {fileID: 1255543763}
   m_RootOrder: 1
@@ -569,7 +571,7 @@ MonoBehaviour:
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
-  m_ChildControlHeight: 0
+  m_ChildControlHeight: 1
 --- !u!114 &182829785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,8 +721,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 600, y: -475}
-  m_SizeDelta: {x: 1100, y: 150}
+  m_AnchoredPosition: {x: 600, y: -331.6235}
+  m_SizeDelta: {x: 1100, y: 85.83333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &205994752
 MonoBehaviour:
@@ -747,14 +749,14 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 30
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Shrikhand Font by Jonny Pinhorn\r\nhttps://fonts.google.com/specimen/Shrikhand\r"
+  m_Text: "Shrikhand Font by Jonny Pinhorn\r - https://goo.gl/t2EHAv"
 --- !u!222 &205994753
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -771,6 +773,80 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224155817238170712, guid: b8a6fe79b0d13284abf52952d02121e5,
     type: 2}
   m_PrefabInternal: {fileID: 1390118956}
+--- !u!1 &390593375
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 390593376}
+  - component: {fileID: 390593378}
+  - component: {fileID: 390593377}
+  m_Layer: 0
+  m_Name: CreditFour
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &390593376
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 390593375}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000019, y: 1.0000019, z: 1.0000019}
+  m_Children: []
+  m_Father: {fileID: 182829783}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 600, y: -442.45682}
+  m_SizeDelta: {x: 1100, y: 85.83333}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &390593377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 390593375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 7ea862c31e877024ca1137af517d0939, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 30
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "THUNDER PIERCE by \u3086\uFF5E\u304E\u308A\u3057\u3050\u308C - https://goo.gl/kVXc6a"
+--- !u!222 &390593378
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 390593375}
 --- !u!1 &453485027
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,6 +1025,7 @@ GameObject:
   - component: {fileID: 466559386}
   - component: {fileID: 466559385}
   - component: {fileID: 466559389}
+  - component: {fileID: 466559390}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1032,6 +1109,86 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorSpeed: 0.002
+--- !u!82 &466559390
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 466559384}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4a84f5347fecac942b288ff7298af49c, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &485448000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,8 +1432,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 600, y: -100}
-  m_SizeDelta: {x: 1100, y: 150}
+  m_AnchoredPosition: {x: 600, y: -88.93676}
+  m_SizeDelta: {x: 1100, y: 127.87352}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &751527447
 MonoBehaviour:
@@ -1303,15 +1460,14 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 30
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Two Million User Party Pack by Unity Technologies - https://assetstore.unity.com/
-    packages/3d/props/two-million-user-party-pack-814
+  m_Text: Two Million User Party Pack by Unity Technologies - https://goo.gl/373s5g
 --- !u!222 &751527448
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2073,6 +2229,11 @@ Prefab:
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114453112551641808, guid: 67226eba7bee34740a6cff0793738401,
+        type: 2}
+      propertyPath: discoBallLifetime
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67226eba7bee34740a6cff0793738401, type: 2}
   m_IsPrefabParent: 0
@@ -2108,8 +2269,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 600, y: -287.5}
-  m_SizeDelta: {x: 1100, y: 150}
+  m_AnchoredPosition: {x: 600, y: -220.79019}
+  m_SizeDelta: {x: 1100, y: 85.83333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1375520854
 MonoBehaviour:
@@ -2136,14 +2297,14 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 30
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MK Glass Free by Michael Kremmel - https://assetstore.unity.com/ packages/vfx/shaders/mk-glass-free-100712
+  m_Text: MK Glass Free by Michael Kremmel - https://goo.gl/5bJCsG
 --- !u!222 &1375520855
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2269,6 +2430,80 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8a6fe79b0d13284abf52952d02121e5, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1506438182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1506438183}
+  - component: {fileID: 1506438185}
+  - component: {fileID: 1506438184}
+  m_Layer: 0
+  m_Name: CreditFive
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1506438183
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1506438182}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000019, y: 1.0000019, z: 1.0000019}
+  m_Children: []
+  m_Father: {fileID: 182829783}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 600, y: -553.29016}
+  m_SizeDelta: {x: 1100, y: 85.83333}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1506438184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1506438182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 7ea862c31e877024ca1137af517d0939, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 30
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Notes generated with Chiptone - https://goo.gl/Ba9EYW
+--- !u!222 &1506438185
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1506438182}
 --- !u!1 &1564449683
 GameObject:
   m_ObjectHideFlags: 0
@@ -2785,12 +3020,12 @@ RectTransform:
   m_Children:
   - {fileID: 56411832}
   m_Father: {fileID: 182829783}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 600, y: -625}
-  m_SizeDelta: {x: 1100, y: 75}
+  m_AnchoredPosition: {x: 600, y: -648.10333}
+  m_SizeDelta: {x: 1100, y: 53.79314}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2001136879
 MonoBehaviour:

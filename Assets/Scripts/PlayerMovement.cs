@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    // Dance audio clip
+    [SerializeField]
+    AudioClip danceClip;
+    // Fire audio clip
+    [SerializeField]
+    AudioClip shootClip;
+    // Bounce audio source
+    [SerializeField]
+    AudioSource bounceSource;
+    // Other audio source
+    [SerializeField]
+    AudioSource otherSource;
     // Brake multiplier
     [SerializeField]
     float brakeMultiplier = .99f;
@@ -41,8 +53,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     Transform shootPoint;
 
-    // Audio source
-    AudioSource audioSource;
     // Can the player shoot?
     bool canShoot = true;
     // Is the player dancing?
@@ -66,7 +76,6 @@ public class PlayerMovement : MonoBehaviour
     // Player rigidbody
     Rigidbody rigidbody;
 
-
     public int PlayerNumber
     {
         get { return playerNumber_UseProperty; }
@@ -80,7 +89,6 @@ public class PlayerMovement : MonoBehaviour
         verticalAxis = "P" + PlayerNumber + "-Vertical";
         fireButton = "P" + PlayerNumber + "-Fire";
         rigidbody = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -132,6 +140,11 @@ public class PlayerMovement : MonoBehaviour
         activeProjectile.transform.Rotate(Vector3.right, -90f);
         Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), activeProjectile.GetComponent<Collider>());
         activeProjectile.GetComponent<Rigidbody>().velocity = shootPoint.transform.forward * fireSpeed;
+        if(otherSource != null)
+        {
+            otherSource.clip = shootClip;
+            otherSource.Play();
+        }
         StartCoroutine(ShootCooldown());
     }
 
@@ -151,10 +164,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if(collision.gameObject.layer == groundLayerNumber)
         {
-            if (audioSource != null)
+            if (bounceSource != null)
             {
-                audioSource.clip = audioClips[Random.Range(0, audioClips.Count)];
-                audioSource.Play();
+                bounceSource.clip = audioClips[Random.Range(0, audioClips.Count)];
+                bounceSource.Play();
             }
         }
     }
@@ -171,7 +184,12 @@ public class PlayerMovement : MonoBehaviour
     {
         isDancing = true;
         rigidbody.velocity = Vector3.zero;
-        rigidbody.angularVelocity = Vector3.left * rotateSpeed * danceRotateMod;
+        rigidbody.AddTorque(Vector3.up * danceRotateMod);
+        if (otherSource != null)
+        {
+            otherSource.clip = danceClip;
+            otherSource.Play();
+        }
         yield return new WaitForSeconds(danceTime);
         rigidbody.angularVelocity = Vector3.zero;
         isDancing = false;

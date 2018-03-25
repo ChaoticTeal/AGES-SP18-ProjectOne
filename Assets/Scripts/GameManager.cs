@@ -26,11 +26,17 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     float minDiscoBallZ = -40f;
     [SerializeField]
+    float minNoteDelay = .05f;
+    [SerializeField]
+    float maxNoteDelay = .25f;
+    [SerializeField]
     GameObject discoBallPrefab;
     [SerializeField]
     GameObject playerEndTextPrefab;
     [SerializeField]
     GameObject endPanel;
+    [SerializeField]
+    List<AudioClip> noteClips;
     [SerializeField]
     string menuScene;
 
@@ -40,6 +46,7 @@ public class GameManager : MonoBehaviour
     private WaitForSeconds m_EndWait;       
     private PlayerManager m_RoundWinner;
     private PlayerManager m_GameWinner;
+    AudioSource bgmSource;
     int activePlayers;
     GameObject activeDiscoBall;
     List<GameObject> playerEndTexts = new List<GameObject>();
@@ -52,6 +59,7 @@ public class GameManager : MonoBehaviour
         m_StartWait = new WaitForSeconds(m_StartDelay);
         m_EndWait = new WaitForSeconds(m_EndDelay);
         playerScores = endPanel.transform.Find("PlayerScores").gameObject;
+        bgmSource = GetComponent<AudioSource>();
 
         SpawnAllPlayers();
         SetCameraTargets();
@@ -128,6 +136,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator RoundPlaying()
     {
         EnablePlayerControl();
+        StartCoroutine(RandomNotes());
         StartCoroutine(DiscoBallSpawn());
 
         m_MessageText.text = string.Empty;
@@ -174,6 +183,19 @@ public class GameManager : MonoBehaviour
                 activeDiscoBall.transform.position = new Vector3(xPos, 10f, zPos);
             }
             yield return new WaitForSeconds(Random.Range(0, 2));
+        }
+    }
+
+    IEnumerator RandomNotes()
+    {
+        while(!OnePlayerLeft())
+        {
+            yield return new WaitForSeconds(Random.Range(minNoteDelay, maxNoteDelay));
+            if (bgmSource != null)
+            {
+                bgmSource.clip = noteClips[Random.Range(0, noteClips.Count)];
+                bgmSource.Play();
+            }
         }
     }
 

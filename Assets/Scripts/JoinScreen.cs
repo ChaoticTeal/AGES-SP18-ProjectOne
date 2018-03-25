@@ -50,7 +50,6 @@ public class JoinScreen : MonoBehaviour
 
     private void InitializePlayerList()
     {
-        Debug.Log("Initializing");
         joinedPlayers = new bool[MaxPlayers];
 
         for (int i = 0; i < MaxPlayers; i++)
