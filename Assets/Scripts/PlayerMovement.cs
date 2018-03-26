@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
     // Can the player shoot?
     bool canShoot = true;
     // Is the player dancing?
-    bool isDancing;
+    bool isDancing_UseProperty;
     // Should the player shoot?
     bool shouldShoot;
     // Horizontal input
@@ -82,6 +82,12 @@ public class PlayerMovement : MonoBehaviour
         set { playerNumber_UseProperty = value; }
     }
 
+    public bool IsDancing
+    {
+        get { return isDancing_UseProperty; }
+        set { isDancing_UseProperty = value; }
+    }
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -99,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isDancing)
+        if (!IsDancing)
         {
             Rotate();
             Move();
@@ -182,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Dance()
     {
-        isDancing = true;
+        IsDancing = true;
         rigidbody.velocity = Vector3.zero;
         rigidbody.AddTorque(Vector3.up * danceRotateMod);
         if (otherSource != null)
@@ -192,6 +198,6 @@ public class PlayerMovement : MonoBehaviour
         }
         yield return new WaitForSeconds(danceTime);
         rigidbody.angularVelocity = Vector3.zero;
-        isDancing = false;
+        IsDancing = false;
     }
 }

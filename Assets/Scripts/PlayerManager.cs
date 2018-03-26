@@ -47,7 +47,7 @@ public class PlayerManager
     public void EnableControl()
     {
         m_Movement.enabled = true;
-
+        m_Movement.IsDancing = false;
         m_CanvasGameObject.SetActive(true);
     }
 
