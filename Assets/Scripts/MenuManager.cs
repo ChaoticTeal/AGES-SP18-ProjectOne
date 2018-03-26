@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour 
 {
@@ -23,6 +24,7 @@ public class MenuManager : MonoBehaviour
     {
         mainPanel.SetActive(false);
         joinPanel.SetActive(true);
+        joinPanel.GetComponentInChildren<Button>().Select();
     }
 
     // Show the credits panel, hide the main panel
@@ -30,6 +32,7 @@ public class MenuManager : MonoBehaviour
     {
         mainPanel.SetActive(false);
         creditsPanel.SetActive(true);
+        creditsPanel.GetComponentInChildren<Button>().Select();
     }
 
     // Show the main panel, hide the credits panel
@@ -37,6 +40,7 @@ public class MenuManager : MonoBehaviour
     {
         creditsPanel.SetActive(false);
         mainPanel.SetActive(true);
+        mainPanel.GetComponentInChildren<Button>().Select();
     }
 
     // Start the game

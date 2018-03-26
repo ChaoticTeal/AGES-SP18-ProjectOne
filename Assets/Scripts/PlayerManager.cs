@@ -48,6 +48,7 @@ public class PlayerManager
     {
         m_Movement.enabled = true;
         m_Movement.IsDancing = false;
+        m_Movement.CanShoot = true;
         m_CanvasGameObject.SetActive(true);
     }
 

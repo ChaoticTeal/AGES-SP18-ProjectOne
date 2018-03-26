@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     Transform shootPoint;
 
     // Can the player shoot?
-    bool canShoot = true;
+    bool canShoot_UseProperty;
     // Is the player dancing?
     bool isDancing_UseProperty;
     // Should the player shoot?
@@ -88,9 +88,16 @@ public class PlayerMovement : MonoBehaviour
         set { isDancing_UseProperty = value; }
     }
 
+    public bool CanShoot
+    {
+        get { return canShoot_UseProperty; }
+        set { canShoot_UseProperty = value; }
+    }
+
 	// Use this for initialization
 	void Start () 
 	{
+        CanShoot = true;
         horizontalAxis = "P" + PlayerNumber + "-Horizontal";
         verticalAxis = "P" + PlayerNumber + "-Vertical";
         fireButton = "P" + PlayerNumber + "-Fire";
@@ -111,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
             Move();
             AdjustVelocity();
         }
-        if (shouldShoot && canShoot)
+        if (shouldShoot && CanShoot)
             Fire();
     }
 
@@ -181,9 +188,9 @@ public class PlayerMovement : MonoBehaviour
     // Wait for cooldown
     IEnumerator ShootCooldown()
     {
-        canShoot = false;
+        CanShoot = false;
         yield return new WaitForSeconds(fireCooldown);
-        canShoot = true;
+        CanShoot = true;
     }
 
     IEnumerator Dance()
