@@ -9,6 +9,9 @@ public class MenuManager : MonoBehaviour
     // Main menu panel
     [SerializeField]
     GameObject mainPanel;
+    // Controls panel
+    [SerializeField]
+    GameObject controlsPanel;
     // Credits panel
     [SerializeField]
     GameObject creditsPanel;
@@ -18,6 +21,15 @@ public class MenuManager : MonoBehaviour
     // Name of next scene
     [SerializeField]
     string nextScene;
+
+    private void Update()
+    {
+        if(Input.GetButtonDown("Cancel"))
+        {
+            if (creditsPanel.activeSelf)
+                CreditsButton();
+        }
+    }
 
     // Go to the join screen
     public void StartButton()
@@ -43,11 +55,20 @@ public class MenuManager : MonoBehaviour
         mainPanel.GetComponentInChildren<Button>().Select();
     }
 
-    // Start the game
+    // Show controls
     public void JoinStartButton()
     {
-        if(JoinScreen.NumberOfJoinedPlayers >= 2)
-            SceneManager.LoadScene(nextScene);
+        if (JoinScreen.NumberOfJoinedPlayers >= 2)
+        {
+            joinPanel.SetActive(false);
+            controlsPanel.SetActive(true);
+            controlsPanel.GetComponentInChildren<Button>().Select();
+        }
+    }
+
+    public void ControlsStartButton()
+    {
+        SceneManager.LoadScene(nextScene);
     }
 
     // Quit the game

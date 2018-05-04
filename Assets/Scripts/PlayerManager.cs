@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Script adapted from TANKS tutorial
 [Serializable]
@@ -29,7 +30,7 @@ public class PlayerManager
         m_Movement.PlayerNumber = m_PlayerNumber;
 
         m_ColoredPlayerText = "<color=#" + ColorUtility.ToHtmlStringRGB(m_PlayerColor) + ">PLAYER " + m_PlayerNumber + "</color>";
-
+        m_CanvasGameObject.transform.Find("LabelText").gameObject.GetComponent<Text>().text = "P " + m_PlayerNumber;
         MeshRenderer[] renderers = m_Instance.GetComponentsInChildren<MeshRenderer>();
 
         renderers[0].material.color = m_PlayerColor;

@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
         {
             //SceneManager.LoadScene(0);
             endPanel.SetActive(true);
+            endPanel.GetComponentInChildren<Button>().Select();
             for(int i = 0; i < activePlayers; i++)
             {
                 playerEndTexts[i].transform.Find("Points").GetComponent<Text>().text = players[i].m_Wins.ToString();

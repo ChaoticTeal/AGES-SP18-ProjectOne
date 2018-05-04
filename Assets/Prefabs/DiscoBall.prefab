@@ -190,7 +190,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1743507147166492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 24.164185, y: 10, z: -26.996723}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4671710081749620}
@@ -267,7 +267,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 0.50196075, g: 0.9958381, b: 1, a: 1}
-  m_Intensity: 100
+  m_Intensity: 25
   m_Range: 50
   m_SpotAngle: 90
   m_CookieSize: 10
@@ -303,7 +303,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 0.75722337, g: 0.50196075, b: 1, a: 1}
-  m_Intensity: 100
+  m_Intensity: 25
   m_Range: 50
   m_SpotAngle: 90
   m_CookieSize: 10
@@ -339,7 +339,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 0.7488994, g: 1, b: 0.50196075, a: 1}
-  m_Intensity: 100
+  m_Intensity: 25
   m_Range: 50
   m_SpotAngle: 90
   m_CookieSize: 10
@@ -375,7 +375,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 0.50196075, b: 0.50196075, a: 1}
-  m_Intensity: 100
+  m_Intensity: 25
   m_Range: 50
   m_SpotAngle: 90
   m_CookieSize: 10
@@ -411,7 +411,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 0.50196075, b: 0.50196075, a: 1}
-  m_Intensity: 5
+  m_Intensity: 2
   m_Range: 50
   m_SpotAngle: 110
   m_CookieSize: 10
@@ -583,7 +583,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2017872177
+  randomSeed: 741871288
   InitialModule:
     serializedVersion: 3
     enabled: 1

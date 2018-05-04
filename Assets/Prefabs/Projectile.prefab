@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358be7a2289df204c83dff0ceabbfabc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
+  damage: 35
   lifetime: 3
 --- !u!198 &198051479353350938
 ParticleSystem:
